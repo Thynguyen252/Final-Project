@@ -1,14 +1,48 @@
- function preload(){
-   corgi = loadImage('assets/corgi.png');
-   sign = loadImage('assets/sign.png');
-  oggy = loadImage('assets/oggy.png');
- }
+let corgi, oggy, sign;
+let x;
+let y;
+let xspeed;
+let yspeed;
 
+function preload() {
+  corgi = loadImage('assets/corgi.png');
+  oggy = loadImage('assets/oggy.png');
+  sign = loadImage('assets/sign.png');
+}
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
+  x = random(width);
+  y = random(height);
+  xspeed = 10;
+  yspeed = 10;
 }
 
 function draw() {
-  background(220);
+  background(20);
+  image(corgi, x, y);
+  image(oggy, mouseX-50, mouseY-50);
+
+  x = x + xspeed;
+  y = y + yspeed;
+
+  if (x + corgi.width >= width) {
+    xspeed = -xspeed;
+    x = width - corgi.width;
+  } else if (x <= 0){
+    xspeed = -xspeed;
+    x = 0;
+  }
+
+   if (y + corgi.height >= height) {
+    yspeed = -yspeed;
+    y = height - corgi.height;
+  } else if (y <= 0){
+    yspeed = -yspeed;
+    y = 0;
+  }
+}
+
+function startNewGame(){
+
 }
