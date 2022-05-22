@@ -41,8 +41,31 @@ function draw() {
     yspeed = -yspeed;
     y = 0;
   }
+  const center = createVector(x,y);
+  const mouse = createVector(mouseX, mouseY);
+
+  const vector = center.copy().sub(mouse);
+    const overlap = vector.mag() - (corgi.width/2 + oggy.width/2);
+
+    // console.log(overlap);
+
+
+    if (overlap < 0) {
+      button = createImg('assets/sign.png');
+      button.position(0,200);
+      button.mousePressed(gameOver);
+      startNewGame();
+      // let shift = vector.copy().normalize().setMag(overlap);
+            } else {
+            fill('white');
+    }
+
+}
+
+function gameOver(){
+  
 }
 
 function startNewGame(){
-
+  window.location.href("https://google.com");
 }
